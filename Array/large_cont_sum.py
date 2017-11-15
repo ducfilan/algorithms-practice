@@ -10,14 +10,13 @@
 
 
 def large_cont_sum(arr):
-    sum_val = 0
-    max_val = 0
+    sum_val = max_val = arr[0]
 
-    for i in arr:
+    for i in arr[1:]:
         sum_val += i
-        
-        if sum_val < 0:
-            sum_val = 0
+
+        if sum_val < i:
+            sum_val = i
 
         if sum_val > max_val:
             max_val = sum_val

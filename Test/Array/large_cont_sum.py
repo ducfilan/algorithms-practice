@@ -7,6 +7,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(sol([1, 2, -1, 3, 4, -1]), 9)
         self.assertEqual(sol([1, 2, -1, 3, 4, 10, 10, -10, -1]), 29)
         self.assertEqual(sol([-1, 1]), 1)
+        self.assertEqual(sol([-5, -1, -2, -4, -3]), -1)
 
 
 if __name__ == '__main__':
