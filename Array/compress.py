@@ -20,7 +20,7 @@ def compress(s):
             output += curr_char + str(count)
             count = 1
             curr_char = c
-            
+
     output += curr_char + str(count)
 
     return output
