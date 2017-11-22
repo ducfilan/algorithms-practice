@@ -1,5 +1,4 @@
 import unittest
-
 from Array.pair_sum import pair_sum
 
 class MyTestCase(unittest.TestCase):
