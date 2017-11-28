@@ -8,10 +8,12 @@ class MyTestCase(unittest.TestCase):
         a = Node(1)
         b = Node(2)
         c = Node(3)
+        d = Node(4)
 
         a.next_node = b
         b.next_node = c
-        c.next_node = a  # Cycle Here!
+        c.next_node = d
+        d.next_node = b  # Cycle Here!
 
         # CREATE NON CYCLE LIST
         x = Node(1)
