@@ -12,11 +12,14 @@ class Node(object):
 
 
 def cycle_check(node):
+    visited_nodes = { node }
     i_node = node
+
     while i_node.next_node is not None:
-        if i_node.next_node != node:
-            i_node = i_node.next_node
-        else:
+        if i_node.next_node in visited_nodes:
             return True
+
+        visited_nodes.add(i_node.next_node)
+        i_node = i_node.next_node
 
     return False
