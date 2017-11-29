@@ -1,5 +1,5 @@
 import unittest
-from LinkedList.cycle_check import cycle_check as sol, Node
+from LinkedList.cycle_check import cycle_check as sol, cycle_check_2 as sol_2, Node
 
 
 class MyTestCase(unittest.TestCase):
@@ -24,7 +24,9 @@ class MyTestCase(unittest.TestCase):
         y.next_node = z
 
         self.assertEqual(sol(a), True)
+        self.assertEqual(sol_2(a), True)
         self.assertEqual(sol(x), False)
+        self.assertEqual(sol_2(x), False)
 
 
 if __name__ == '__main__':

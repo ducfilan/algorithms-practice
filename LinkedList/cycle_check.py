@@ -23,3 +23,17 @@ def cycle_check(node):
         i_node = i_node.next_node
 
     return False
+
+
+def cycle_check_2(node):
+    follow_node = node
+    lead_node = node.next_node
+
+    while lead_node is not None:
+        if lead_node == follow_node:
+            return True
+
+        lead_node = lead_node.next_node.next_node
+        follow_node = follow_node.next_node
+
+    return False
