@@ -5,25 +5,14 @@ class Node(object):
 
 
 def reverse(head):
-    if head.next_node is None:
-        return
+    current_node = head
+    previous_node = None
+    next_node = Node
 
-    prev_node = head.next_node
-    if prev_node.next_node is None:
-        head.next_node = None
-        prev_node.next_node = head
-        return
+    while current_node:
+        next_node = current_node.next_node
+        current_node.next_node = previous_node
+        previous_node = current_node
+        current_node = next_node
 
-    i_node = prev_node.next_node
-    prev_prev_node = head
-    prev_prev_node.next_node = None
-
-    while i_node.next_node is not None:
-        prev_node.next_node = prev_prev_node
-        prev_prev_node = prev_node
-        prev_node = i_node
-        i_node = i_node.next_node
-    else:
-        prev_node.next_node = prev_prev_node
-
-    i_node.next_node = prev_node
+    return current_node
