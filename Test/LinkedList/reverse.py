@@ -22,6 +22,19 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(b.next_node, a)
         self.assertEqual(a.next_node, None)
 
+        a = Node('a')
+        sol(a)
+
+        a = Node('a')
+        b = Node('b')
+
+        a.next_node = b
+
+        sol(a)
+
+        self.assertEqual(b.next_node, a)
+        self.assertEqual(a.next_node, None)
+
 
 if __name__ == '__main__':
     unittest.main()
