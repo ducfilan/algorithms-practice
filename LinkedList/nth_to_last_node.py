@@ -18,4 +18,10 @@ def nth_to_last_node(n, head):
         if len(trace_arr) > n:
             trace_arr = trace_arr[1:]
 
-    return -1 if len(trace_arr) < n - 1 else trace_arr[0 if len(trace_arr) == n - 1 else 1]
+    if len(trace_arr) < n - 1:
+        return -1
+
+    if len(trace_arr) == n - 1:
+        return trace_arr[0]
+
+    return trace_arr[1]
