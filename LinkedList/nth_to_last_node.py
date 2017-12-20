@@ -33,7 +33,7 @@ def nth_to_last_node2(n, head):
 
     while i < n:
         i += 1
-        if right.next_node is None:
+        if not right.next_node:
             return -1
 
         right = right.next_node
