@@ -25,3 +25,21 @@ def nth_to_last_node(n, head):
         return trace_arr[0]
 
     return trace_arr[1]
+
+
+def nth_to_last_node2(n, head):
+    left, right = head, head
+    i = 1
+
+    while i < n:
+        i += 1
+        if right.next_node is None:
+            return -1
+
+        right = right.next_node
+
+    while right.next_node:
+        left = left.next_node
+        right = right.next_node
+
+    return left.value
