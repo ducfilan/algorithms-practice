@@ -18,7 +18,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(sol(2,a), 4)
         self.assertEqual(sol(4,a), 2)
         self.assertEqual(sol(5,a), 1)
-        self.assertEqual(sol(6,a), -1)
+        self.assertEqual(sol(6,a), None)
 
     def test_solution2(self):
         a = Node(1)
@@ -35,7 +35,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(sol2(2,a), 4)
         self.assertEqual(sol2(4,a), 2)
         self.assertEqual(sol2(5,a), 1)
-        self.assertEqual(sol2(6,a), -1)
+        self.assertEqual(sol2(6,a), None)
 
 
 if __name__ == '__main__':

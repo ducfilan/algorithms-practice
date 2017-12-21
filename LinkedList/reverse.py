@@ -11,7 +11,6 @@ class Node(object):
 def reverse(head):
     current_node = head
     previous_node = None
-    next_node = Node
 
     while current_node:
         next_node = current_node.next_node
