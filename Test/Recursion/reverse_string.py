@@ -7,6 +7,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(reverse_string('hello'), 'olleh')
         self.assertEqual(reverse_string('hello world'), 'dlrow olleh')
         self.assertEqual(reverse_string('123456789'), '987654321')
+        self.assertEqual(reverse_string(''), '')
 
 
 if __name__ == '__main__':
