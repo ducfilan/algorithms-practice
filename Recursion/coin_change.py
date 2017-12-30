@@ -31,3 +31,16 @@ def coin_change(target, coins, cache={}):
 
     cache[target] = min_coins
     return min_coins
+
+
+def coin_change_dynamic(target, coins):
+    min_coins = [0] * (target + 1)
+
+    for cents in range(target + 1):
+        coin_count = cents
+        for j in [c for c in coins if c <= cents]:
+            if min_coins[cents - j] + 1 < coin_count:
+                coin_count = min_coins[cents - j] + 1
+
+        min_coins[cents] = coin_count
+    return min_coins[target]
