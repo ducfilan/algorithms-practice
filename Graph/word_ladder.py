@@ -8,12 +8,12 @@ def build_graph(words):
     g = Graph()
 
     for word in words:
-        for i, c in range(len(word)):
+        for i in range(len(word)):
             bucket = word[:i] + '_' + word[i+1:]
             if bucket in d:
                 d[bucket].append(word)
             else:
-                d[bucket] = []
+                d[bucket] = [word]
 
         for bucket in d.keys():
             for word1 in d[bucket]:
@@ -24,7 +24,7 @@ def build_graph(words):
     return g
 
 
-def bfs(g, start):
+def bfs(start):
     start.set_distance(0)
     start.set_predecessor_vertex(None)
 
