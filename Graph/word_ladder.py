@@ -1,5 +1,6 @@
 from Graph.DS.Graph import Graph
 from Graph.DS.Vertex import Vertex
+from Graph.DS.queue import Queue
 
 
 def build_graph(words):
@@ -21,3 +22,23 @@ def build_graph(words):
                         g.add_edge(word1, word2)
 
     return g
+
+
+def bfs(g, start):
+    start.set_distance(0)
+    start.set_predecessor_vertex(None)
+
+    vertices_queue = Queue()
+    vertices_queue.enqueue(start)
+
+    while vertices_queue.size() > 0:
+        current_vertex = vertices_queue.dequeue()
+
+        for neighbor in current_vertex.get_connections():
+            neighbor.set_color('grey')
+            neighbor.set_distance(current_vertex.get_distance() + 1)
+            neighbor.set_predecessor_vertex(current_vertex)
+
+            vertices_queue.enqueue(neighbor)
+
+        current_vertex.set_color('black')
