@@ -2,10 +2,7 @@
 # and then returns the nth to last node in the linked list.
 
 
-class Node(object):
-    def __init__(self, value):
-        self.next_node = None
-        self.value = value
+from LinkedList.node import Node
 
 
 def nth_to_last_node(n, head):

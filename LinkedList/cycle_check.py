@@ -5,10 +5,7 @@
 # This is also sometimes known as a circularly linked list.
 
 
-class Node(object):
-    def __init__(self, value):
-        self.value = value
-        self.next_node = None
+from LinkedList.node import Node
 
 
 def cycle_check(node):

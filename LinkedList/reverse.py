@@ -2,10 +2,7 @@
 # The function will take in the head of the list as input and return the new head of the list.
 
 
-class Node(object):
-    def __init__(self, value):
-        self.value = value
-        self.next_node = None
+from LinkedList.node import Node
 
 
 def reverse(head):
