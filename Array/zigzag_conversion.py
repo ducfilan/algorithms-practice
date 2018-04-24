@@ -40,7 +40,7 @@ def zigzag_conversion(s, num_rows):
         base_steps.append(i)
 
     visited_set = set()
-    print(base_steps)
+	
     escalator = 1
     while len(output) < n:
         for i in base_steps:
