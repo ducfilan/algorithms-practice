@@ -51,7 +51,7 @@ def zigzag_conversion(s, num_rows):
                 output += s[pre_i]
                 visited_set.add(pre_i)
 
-            if pos_i > 0 and pos_i < n and pos_i not in visited_set:
+            if pos_i < n and pos_i not in visited_set:
                 output += s[pos_i]
                 visited_set.add(pos_i)
 
