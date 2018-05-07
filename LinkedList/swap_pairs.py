@@ -31,13 +31,13 @@ def swap_pairs(head):
             nodes_group[0].next = nodes_group[3]
             start = nodes_group[2]
             nodes_group = []
-    else:
-        if len(nodes_group) == 3:
-            nodes_group[1].next = nodes_group[0]
-            nodes_group[0].next = nodes_group[2]
-        else:
-            nodes_group[1].next = nodes_group[0]
-            nodes_group[0].next = None
+
+	if len(nodes_group) == 3:
+		nodes_group[1].next = nodes_group[0]
+		nodes_group[0].next = nodes_group[2]
+	else:
+		nodes_group[1].next = nodes_group[0]
+		nodes_group[0].next = None
         
     return head
 
