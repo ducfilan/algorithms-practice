@@ -19,7 +19,7 @@ def build_graph(words):
             for word1 in d[bucket]:
                 for word2 in d[bucket]:
                     if word1 != word2:
-                        g.add_edge(word1, word2)
+                        g.add_edge_from_keys(word1, word2)
 
     return g
 

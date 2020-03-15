@@ -21,6 +21,9 @@ class Vertex(object):
     def get_cost(self, v):
         return self.vertices_connected_to[v]
 
+    def get_label(self):
+        return self.label
+
     def add_neighbor(self, v, cost=0):
         self.vertices_connected_to[v] = cost
 

@@ -10,7 +10,7 @@ alphabet = [None, 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm
 
 def num_ways(data, memo={}):
     if len(data) == 0 or data[0] == '0':
-        return ['']
+        return None
 
     if len(data) == 1:
         return [alphabet[int(data)]]
@@ -34,6 +34,27 @@ def num_ways(data, memo={}):
     return result
 
 
+def num_ways_count(data, memo={}):
+    if data.startswith('0'):
+        return 0
+
+    if len(data) <= 1:
+        return 1
+
+    if len(data) in memo:
+        return memo[len(data)]
+
+    result = num_ways_count(data[1:], memo)
+
+    if int(data[:2]) <= 26:
+        result += num_ways_count(data[2:], memo)
+
+    memo[len(data)] = result
+
+    return result
+
+
 print(num_ways('123123123'))
+print(num_ways_count('123123123'))
 print(num_ways('01'))
 print(num_ways('10'))
