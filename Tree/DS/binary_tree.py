@@ -28,7 +28,7 @@ class BinaryTree(object):
     def get_right_child(self):
         return self.right_child
 
-    def get_root_value(self):
+    def get_value(self):
         return self.key
 
     def set_root_value(self, new_value):
@@ -36,18 +36,18 @@ class BinaryTree(object):
 
     def pre_order_traverse(self, tree):
         if tree:
-            print(tree.get_root_value())
+            print(tree.get_value())
             self.in_order_traverse(tree.get_left_child())
             self.in_order_traverse(tree.get_right_child())
 
     def in_order_traverse(self, tree):
         if tree:
             self.in_order_traverse(tree.get_left_child())
-            print(tree.get_root_value())
+            print(tree.get_value())
             self.in_order_traverse(tree.get_right_child())
 
     def post_order_traverse(self, tree):
         if tree:
             self.in_order_traverse(tree.get_left_child())
             self.in_order_traverse(tree.get_right_child())
-            print(tree.get_root_value())
+            print(tree.get_value())
