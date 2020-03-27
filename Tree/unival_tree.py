@@ -19,7 +19,7 @@ import sys
 sys.path.extend(
     [os.path.realpath(os.path.join(os.path.dirname(__file__), '..'))])
 
-from Tree.DS.binary_tree import BinaryTree
+from Tree.DS.binary_tree import TreeNode
 
 
 def unival_tree(root):
@@ -47,7 +47,7 @@ def unival_tree(root):
     return count
 
 
-tree = BinaryTree(0)
+tree = TreeNode(0)
 tree.insert_left(1)
 tree.insert_right(0)
 tree.get_right_child().insert_right(0)

@@ -2,7 +2,8 @@ def solution(A):
     if not A:
         return -1
 
-    sorted_A = sorted([(i, num) for i, num in enumerate(A)], key=lambda t: t[1])
+    sorted_A = sorted([(i, num)
+                       for i, num in enumerate(A)], key=lambda t: t[1])
     max_distance = -1
     prev_i, curr_i = 0, 1
     N = len(A)
