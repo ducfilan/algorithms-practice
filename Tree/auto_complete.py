@@ -11,46 +11,51 @@ class TrieNode:
         return child_node
 
 
-def find_words(node, prefix):
-    words = []
+class Solution:
+    def __init__(self):
+        self.trie_root = None
 
-    if node.is_end:
-        words += [prefix]
+    def _find_words(self, node, prefix):
+        words = []
 
-    for child in node.children.values():
-        words += find_words(child, prefix + child.value)
+        if node.is_end:
+            words += [prefix]
 
-    return words
+        for child in node.children.values():
+            words += self._find_words(child, prefix + child.value)
 
+        return words
 
-def auto_complete(prefix, dictionary):
-    current_node = build_trie(dictionary)
+    def auto_complete(self, prefix):
+        current_node = self.trie_root
 
-    for c in prefix:
-        if c not in current_node.children:
-            return []
-        current_node = current_node.children[c]
+        for c in prefix:
+            if c not in current_node.children:
+                return []
+            current_node = current_node.children[c]
 
-    return find_words(current_node, prefix)
+        return self._find_words(current_node, prefix)
 
-
-def build_trie(dictionary):
-    root = TrieNode(None)
-    current_node = root
-
-    for word in dictionary:
-        for c in word:
-            if c in current_node.children:
-                current_node = current_node.children[c]
-            else:
-                current_node = current_node.add_child(c)
-
-        current_node.is_end = True
-
+    def build_trie(self, dictionary):
+        root = TrieNode(None)
         current_node = root
 
-    return root
+        for word in dictionary:
+            for c in word:
+                if c in current_node.children:
+                    current_node = current_node.children[c]
+                else:
+                    current_node = current_node.add_child(c)
+
+            current_node.is_end = True
+
+            current_node = root
+
+        self.trie_root = root
 
 
-print(auto_complete('ab', ['ab', 'abc', 'abd', 'abcde',
-                           'bcd', 'bce', 'bcdef', 'cde', 'def']))
+s = Solution()
+s.build_trie(['ab', 'abc', 'abd', 'abcde', 'bcd',
+              'bce', 'bcdef', 'cde', 'def'])
+
+print(s.auto_complete('ab'))
