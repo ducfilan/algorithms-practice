@@ -1,5 +1,8 @@
 class Solution:
     def lengthOfLongestSubstringKDistinct(self, s, k):
+        if s == "" or k == 0:
+            return ""
+
         distinct_substring = {}
 
         substring_length = 0
