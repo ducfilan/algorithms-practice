@@ -13,11 +13,10 @@ class Solution:
         substring_length = 0
         max_substring_length = 0
 
-        start, end = 0, 0
+        start = 0
         max_start, max_end = 0, 0
 
-        for i, c in enumerate(s):
-            end = i
+        for end, c in enumerate(s):
             substring_length += 1
 
             if c not in distinct_substring:
@@ -42,4 +41,8 @@ class Solution:
 
 
 s = Solution()
-print(s.lengthOfLongestSubstringKDistinct('abcbcaddadaadefg', 2))
+
+print('pass' if s.lengthOfLongestSubstringKDistinct('', 2) == '' else 'fail')
+print('pass' if s.lengthOfLongestSubstringKDistinct('abc', 0) == '' else 'fail')
+print('pass' if s.lengthOfLongestSubstringKDistinct('abc', 1) == 'a' else 'fail')
+print('pass' if s.lengthOfLongestSubstringKDistinct('abcbcaddadaadefg', 2) == 'addadaad' else 'fail')
