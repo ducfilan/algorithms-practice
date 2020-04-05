@@ -36,9 +36,12 @@ class Solution:
             current_node.is_end = True
             current_node = self.root
 
-    def find_min_spaces(self, sub_string=None):
+    def find_min_spaces(self, sub_string=None, memo={}):
         if sub_string is None:
             sub_string = self.string
+
+        if sub_string in memo:
+            return memo[sub_string]
 
         space_count = 0
 
@@ -48,14 +51,15 @@ class Solution:
             num = sub_string[i]
 
             if num not in current_node.children:
-                return -1
+                space_count = -1
+                break
             else:
                 if current_node.children[num].is_end:
                     if i < len(sub_string) - 1:
                         space_count += 1
 
                     part_space_count = self.find_min_spaces(
-                        sub_string[i+1:])
+                        sub_string[i+1:], memo)
                     if part_space_count == -1:
                         space_count -= 1
                         current_node = current_node.children[num]
@@ -66,6 +70,7 @@ class Solution:
 
                 current_node = current_node.children[num]
 
+        memo[sub_string] = space_count
         return space_count
 
 
