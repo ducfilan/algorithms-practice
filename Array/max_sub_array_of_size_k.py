@@ -27,8 +27,7 @@ def max_sub_array_of_size_k(k, arr):
 
         if len(sub_array_elements) >= k:
             sub_array_sum = sum(sub_array_elements)
-            if sub_array_sum > max_sub_array_sum:
-                max_sub_array_sum = sub_array_sum
+            max_sub_array_sum = max(max_sub_array_sum, sub_array_sum)
 
             sub_array_elements.pop(0)
 
