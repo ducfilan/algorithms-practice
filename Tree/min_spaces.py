@@ -67,6 +67,8 @@ class Solution:
 
                     space_count += part_space_count
                     break
+                elif i == len(sub_string) - 1:
+                    return -1
 
                 current_node = current_node.children[num]
 
@@ -76,6 +78,20 @@ class Solution:
 
 s = Solution('3141592653589793238462643383279',
              ['314', '49', '9001', '15926535897', '14', '9323', '8462643383279', '4', '793'])
+
+s.build_trie()
+
+# print(s.find_min_spaces())
+
+s = Solution('aaaaaaa',
+             ['aaaa', 'aa'])
+
+s.build_trie()
+
+#print(s.find_min_spaces())
+
+s = Solution('ab',
+             ['b', 'a'])
 
 s.build_trie()
 
