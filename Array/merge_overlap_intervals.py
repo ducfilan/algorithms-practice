@@ -28,13 +28,16 @@ class Solution:
                 end_pointer += 1
                 continue
 
-            if self.intervals[start_pointer].start <= self.intervals[end_pointer].start and self.intervals[start_pointer].end <= self.intervals[end_pointer].end and self.intervals[start_pointer].end > self.intervals[end_pointer].start:
+            if self.intervals[start_pointer].start <= self.intervals[end_pointer].start and \
+                    self.intervals[start_pointer].end <= self.intervals[end_pointer].end and \
+                    self.intervals[start_pointer].end > self.intervals[end_pointer].start:
                 self.intervals[1] = Interval(self.intervals[start_pointer].start,
                                              self.intervals[end_pointer].end)
                 self.intervals.pop(0)
                 continue
 
-            if self.intervals[start_pointer].start <= self.intervals[end_pointer].start and self.intervals[start_pointer].end >= self.intervals[end_pointer].end:
+            if self.intervals[start_pointer].start <= self.intervals[end_pointer].start and \
+                    self.intervals[start_pointer].end >= self.intervals[end_pointer].end:
                 self.intervals.pop(1)
                 continue
 
