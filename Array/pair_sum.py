@@ -23,3 +23,21 @@ def pair_sum(arr, k):
             trace.add(k - e)
 
     return count
+
+
+def is_pair_sum_exists(nums, target):
+    start, end = 0, len(nums) - 1
+
+    while start < end:
+        sum = nums[start] + nums[end]
+        if sum > target:
+            end -= 1
+        elif sum < target:
+            start += 1
+
+        return True
+
+    return False
+
+
+print(is_pair_sum_exists([1, 2, 3, 4, 6], 6))

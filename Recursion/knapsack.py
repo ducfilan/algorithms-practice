@@ -8,7 +8,7 @@ class KnapsackOptimizer:
         self.weights = weights
         self.profits = profits
         self.capacity = capacity
-        self.cache = [[-1 for x in range(capacity+1)] for y in range(len(profits))]
+        self.cache = [[-1 for x in range(capacity+1)] for y in range(len(weights))]
 
     def _find_max_profit_from_index(self, capacity_left, current_index):
         if capacity_left <= 0 or current_index >= len(self.weights):
