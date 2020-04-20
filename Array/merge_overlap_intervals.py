@@ -19,37 +19,33 @@ class Solution:
         if len(self.intervals) <= 1:
             return self.intervals
 
-        start_pointer = 0
-        end_pointer = 1
+        self.intervals.sort(key=lambda interval: interval.start)
 
-        while end_pointer < len(self.intervals):
-            if self.intervals[start_pointer].end <= self.intervals[end_pointer].start:
-                start_pointer += 1
-                end_pointer += 1
-                continue
+        start = self.intervals[0].start
+        end = self.intervals[0].end
 
-            if self.intervals[start_pointer].start <= self.intervals[end_pointer].start and \
-                    self.intervals[start_pointer].end <= self.intervals[end_pointer].end and \
-                    self.intervals[start_pointer].end > self.intervals[end_pointer].start:
-                self.intervals[1] = Interval(self.intervals[start_pointer].start,
-                                             self.intervals[end_pointer].end)
-                self.intervals.pop(0)
-                continue
+        merged_intervals = []
 
-            if self.intervals[start_pointer].start <= self.intervals[end_pointer].start and \
-                    self.intervals[start_pointer].end >= self.intervals[end_pointer].end:
-                self.intervals.pop(1)
-                continue
+        for i in range(1, len(self.intervals)):
+            next_interval = self.intervals[i]
 
-        return self.intervals
+            if next_interval.start <= end:
+                end = max(next_interval.end, end)
+            else:
+                merged_intervals.append(Interval(start, end))
+                start = next_interval.start
+                end = next_interval.end
 
-    def to_list_arrays(self):
+        merged_intervals.append(Interval(start, end))
+
+        return merged_intervals
+
+    def to_list_arrays(self, intervals):
         return list(map(
             lambda interval: [interval.start, interval.end],
-            self.intervals
+            intervals
         ))
 
 
 s = Solution([[1, 4], [1, 5], [7, 9]])
-s.merge_overlap_interval()
-print(s.to_list_arrays())
+print(s.to_list_arrays(s.merge_overlap_interval()))
