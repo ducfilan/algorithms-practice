@@ -1,5 +1,5 @@
 def to_zombies(matrix, i, j):
-    human_count = 0
+    humans = []
 
     neighbors = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
@@ -11,10 +11,10 @@ def to_zombies(matrix, i, j):
             continue
 
         if matrix[neighbor_i][neighbor_j] == 0:
-            human_count += 1
+            humans.append((neighbor_i, neighbor_j))
             matrix[neighbor_i][neighbor_j] = 1
 
-    return human_count
+    return humans
 
 
 def min_hours(matrix):
@@ -25,16 +25,17 @@ def min_hours(matrix):
 
     hours_count = 0
 
+    zombie_cells = [(i, j) for i in range(row) for j in range(col) if matrix[i][j] == 1]
+
     while True:
-        human_count = 0
-        zombie_cells = [(i, j) for i in range(row) for j in range(col) if matrix[i][j] == 1]
+        humans_affected = []
 
         for i, j in zombie_cells:
             if matrix[i][j] == 1:
-                human_count += to_zombies(matrix, i, j)
-        if human_count == 0:
+                humans_affected += to_zombies(matrix, i, j)
+        if not humans_affected:
             break
-
+        zombie_cells = humans_affected
         hours_count += 1
 
     return hours_count
