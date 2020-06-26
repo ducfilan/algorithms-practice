@@ -23,7 +23,7 @@
 
 class Solution(object):
     def _change_state(self, current_state, falling_positions):
-        next_falling_positions = []
+        next_falling_positions = set()
 
         for position in falling_positions:
             current_position_state = current_state[position]
@@ -33,7 +33,8 @@ class Solution(object):
                     position >= 2 and
                     current_position_state == 'L' and
                     current_state[position - 1] == '.' and
-                    current_state[position - 2] == 'R'
+                    current_state[position - 2] == 'R' and
+                    (position - 2) not in next_falling_positions
                 ) or
                     (
                     position <= len(current_state) - 3 and
@@ -44,12 +45,12 @@ class Solution(object):
 
             if is_current_position_balanced:
                 continue
-            elif current_position_state == 'L' and position > 0:
+            elif current_position_state == 'L' and position > 0 and current_state[position - 1] == '.':
                 current_state[position - 1] = 'L'
-                next_falling_positions.append(position - 1)
-            elif current_position_state == 'R' and position < (len(current_state) - 1):
+                next_falling_positions.add(position - 1)
+            elif current_position_state == 'R' and position < (len(current_state) - 1) and current_state[position + 1] == '.':
                 current_state[position + 1] = 'R'
-                next_falling_positions.append(position + 1)
+                next_falling_positions.add(position + 1)
 
         if not next_falling_positions:
             return current_state
@@ -69,3 +70,4 @@ print(Solution().pushDominoes(''))
 print(Solution().pushDominoes('L'))
 print(Solution().pushDominoes('LL'))
 print(Solution().pushDominoes('R.L'))
+print(Solution().pushDominoes('R..L'))
