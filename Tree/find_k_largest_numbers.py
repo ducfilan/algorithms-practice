@@ -4,6 +4,9 @@ from heapq import heappop, heappush
 
 
 def find_k_largest_numbers(nums, k):
+    if k >= len(nums):
+        return nums
+
     top_k_largest = []
 
     for num in nums[:k + 1]:
@@ -17,6 +20,7 @@ def find_k_largest_numbers(nums, k):
 
     return top_k_largest
 
-
+print(find_k_largest_numbers([], 1))
+print(find_k_largest_numbers([1], 2))
 print(find_k_largest_numbers([3, 1, 5, 12, 2, 11], 3))
 print(find_k_largest_numbers([11, 12, 5, 3, 1, 2], 3))
