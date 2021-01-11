@@ -48,14 +48,11 @@ def zigzag_traverse(root):
 
     zigzag_flag = True
 
-    output_vals_current_level = []
-
     current_level_nodes.append(root)
 
     while len(current_level_nodes) > 0:
         node = current_level_nodes.pop()
-
-        output_vals_current_level.append(node.val)
+        print(node.val, end=(',' if len(current_level_nodes) > 0 else '' ))
 
         if zigzag_flag:
             if node.left:
@@ -71,8 +68,7 @@ def zigzag_traverse(root):
                 next_level_nodes.append(node.left)
 
         if len(current_level_nodes) == 0:
-            print(','.join(map(str, output_vals_current_level)), end='#')
-            output_vals_current_level = []
+            print('#', end='')
 
             zigzag_flag = not zigzag_flag
             current_level_nodes = next_level_nodes
