@@ -11,12 +11,14 @@ func lengthOfLongestSubstring(s string) int {
         charIndex, exist := charToIndex[c]
 
         if exist && charIndex >= start {
-            longest = max(longest, i - charIndex)
+            longest = max(longest, i-start)
             start = charIndex + 1
         }
 
         charToIndex[c] = i
     }
+
+    longest = max(longest, len(s)-start)
 
     return longest
 }
