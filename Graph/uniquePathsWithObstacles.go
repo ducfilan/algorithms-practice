@@ -33,6 +33,47 @@ n == obstacleGrid[i].length
 obstacleGrid[i][j] is 0 or 1.
 */
 
+func uniquePathsWithObstacles2(obstacleGrid [][]int) int {
+    m, n := len(obstacleGrid), len(obstacleGrid[0])
+    dp := make([][]int, m)
+    for i := range dp {
+        dp[i] = make([]int, n)
+    }
+
+    // If the start cell has an obstacle, then return 0
+    if obstacleGrid[0][0] == 1 {
+        return 0
+    } else {
+        dp[0][0] = 1
+    }
+
+    // Fill the first row and column
+    for i := 1; i < m; i++ {
+        if obstacleGrid[i][0] == 0 && dp[i-1][0] == 1 {
+            dp[i][0] = 1
+        }
+    }
+    for j := 1; j < n; j++ {
+        if obstacleGrid[0][j] == 0 && dp[0][j-1] == 1 {
+            dp[0][j] = 1
+        }
+    }
+
+    // Fill the rest of the table
+    for i := 1; i < m; i++ {
+        for j := 1; j < n; j++ {
+            if obstacleGrid[i][j] == 0 {
+                dp[i][j] = dp[i-1][j] + dp[i][j-1]
+            }
+        }
+    }
+
+    // Return the value in the bottom-right cell
+    return dp[m-1][n-1]
+}
+
+
+
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
 	if len(obstacleGrid) == 0 || isObstacle(obstacleGrid, 0, 0) {
 		return 0
